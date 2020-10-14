@@ -27,4 +27,10 @@ public class Card {
 		return this.color;
 	}
 
+	@Override
+	public String toString(){
+		String card = String.format("%s of %s", getValue(), getSuit());
+		return card; 
+	}
+
 }
