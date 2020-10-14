@@ -10,8 +10,13 @@ public class Card {
 
 	public Card(Suit suit, int value) {
 		this.suit = suit;
-		this.value = value;
+		if(value > 10){
+			this.value = 10;
+		} else {
+			this.value = value;
+		}
 		convertValue();
+		
 	}
 
 	// Methods
