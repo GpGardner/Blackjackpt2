@@ -28,14 +28,12 @@ public class Blackjack {
 		Scanner userInput = new Scanner(System.in);
 		String play = "Y";
 		System.out.println("\nWELCOME TO GEORGE'S BLACKJACK\n");
-		System.out.println("Ill shuffle the deck\n");
 		deck.shuffleCards();
 
 		//Game Loop
 		while (play.equalsIgnoreCase("Y")) {
 			System.out.printf("Lets start a new round: \n");
 			if(deck.getNumberOfCards() < 15){
-				System.out.println("Time for a shuffle!!\n");
 				deck = new Deck();
 				deck.shuffleCards();
 			}
