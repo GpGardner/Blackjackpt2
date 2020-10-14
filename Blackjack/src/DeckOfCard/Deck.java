@@ -6,9 +6,12 @@ import java.util.Random;
 public class Deck {
 
 	private ArrayList<Card> cards;
+	private ArrayList<Card> discardPile;
 	private int numberOfCards;
 
+
 	public Deck() {
+		discardPile = new ArrayList<Card>();
 		this.numberOfCards = 52;
 		generateCards();
 	}
@@ -34,6 +37,10 @@ public class Deck {
 		}
 	}
 
+	public void addToDiscardPile(Card card){
+			this.discardPile.add(card);
+	}
+
 	private void generateCards() {
 		this.cards = new ArrayList<Card>();
 		for (int value = 1; value < 14; value++) {
@@ -41,6 +48,10 @@ public class Deck {
 				this.cards.add(new Card(Suit.values()[suit], value));
 			}
 		}
+	}
+
+	public void showDiscardPile(){
+		System.out.println(discardPile);
 	}
 
 	@Override
