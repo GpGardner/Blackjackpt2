@@ -20,36 +20,40 @@ public class Player {
 	}
 
 	public void showCards() {
-		for (Card card : hand) {
+		for (Card card : this.hand) {
 			System.out.println(card.toString());
 		}
 	}
 
-	public void giveCard(Card card){
-		this.hand.add(card);	
+	public void giveCard(Card card) {
+		this.hand.add(card);
 		this.currentTotal += card.getValue();
-		if(this.currentTotal > 21){
+		if (this.currentTotal > 21) {
 			this.broke = true;
 		}
-		if(this.currentTotal == 21 ){
+		if (this.currentTotal == 21) {
 			this.hasBlackJack = true;
 		}
 	}
 
-	
-	public int getCurrentTotal(){
+	public void removeAllCards() {
+		this.hand.clear();
+		this.currentTotal = 0;
+	}
+
+	public int getCurrentTotal() {
 		return this.currentTotal;
 	}
 
-	public boolean getBroke(){
+	public boolean getBroke() {
 		return this.broke;
 	}
 
-	public boolean getHasBlackJack(){
+	public boolean getHasBlackJack() {
 		return this.hasBlackJack;
 	}
 
-	public String getName(){
+	public String getName() {
 		return this.name;
 	}
 
