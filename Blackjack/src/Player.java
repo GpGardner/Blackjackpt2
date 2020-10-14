@@ -9,6 +9,7 @@ public class Player {
 	private ArrayList<Card> hand;
 	private int currentTotal;
 	private boolean broke;
+	private boolean hasBlackJack;
 
 	public Player(String name) {
 		this.name = name;
@@ -17,11 +18,9 @@ public class Player {
 	}
 
 	public void showCards() {
-
 		for (Card card : hand) {
 			System.out.println(card.toString());
 		}
-
 	}
 
 	public void giveCard(Card card){
@@ -29,6 +28,9 @@ public class Player {
 		this.currentTotal += card.getValue();
 		if(this.currentTotal > 21){
 			this.broke = true;
+		}
+		if(this.currentTotal == 21 ){
+			this.hasBlackJack = true;
 		}
 	}
 
@@ -39,6 +41,10 @@ public class Player {
 
 	public boolean getBroke(){
 		return this.broke;
+	}
+
+	public boolean getHasBlackJack(){
+		return this.hasBlackJack;
 	}
 
 	public String getName(){
