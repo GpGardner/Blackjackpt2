@@ -11,7 +11,7 @@ public class Card {
 	public Card(Suit suit, int value) {
 		this.suit = suit;
 		this.value = value;
-		this.convertValue();
+		convertValue();
 	}
 
 	// Methods
@@ -26,6 +26,10 @@ public class Card {
 
 	public Color getColor() {
 		return this.color;
+	}
+
+	public String getCardType(){
+		return this.cardType;
 	}
 
 	private String convertValue() {
@@ -72,13 +76,12 @@ public class Card {
 			default:
 				break;
 		}
-
 		return this.cardType;
 	}
 
 	@Override
 	public String toString() {
-		String card = String.format("%s of %s", getValue(), getSuit());
+		String card = String.format("%s of %s", getCardType(), getSuit());
 		return card;
 	}
 
