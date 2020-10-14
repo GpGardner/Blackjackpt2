@@ -6,12 +6,11 @@ import java.util.Random;
 public class Deck {
 
 	private ArrayList<Card> cards;
-	private ArrayList<Card> discardPile;
+	// private ArrayList<Card> discardPile; don't need a discardPile
 	private int numberOfCards;
 
 
 	public Deck() {
-		discardPile = new ArrayList<Card>();
 		this.numberOfCards = 52;
 		generateCards();
 	}
@@ -19,6 +18,7 @@ public class Deck {
 	public Card dealCard(){
 		Card toDeal = cards.get(0);
 		cards.remove(0);
+		numberOfCards--;
 		return toDeal;
 	}
 
@@ -37,10 +37,10 @@ public class Deck {
 		}
 	}
 
-	public void addToDiscardPile(Card card){
-			this.discardPile.add(card);
+	public int getNumberOfCards(){
+		return numberOfCards;
 	}
-
+	
 	private void generateCards() {
 		this.cards = new ArrayList<Card>();
 		for (int value = 1; value < 14; value++) {
@@ -49,10 +49,15 @@ public class Deck {
 			}
 		}
 	}
-
-	public void showDiscardPile(){
-		System.out.println(discardPile);
-	}
+	
+	// public void addToDiscardPile(Card card){
+	// 		this.discardPile.add(card);
+	// } 
+	//Don't need a discard pile
+	// public void showDiscardPile(){
+	// 	System.out.println(discardPile);
+	// }
+	//Don't need a discard pile
 
 	@Override
 	public String toString() {
