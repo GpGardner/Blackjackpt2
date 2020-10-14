@@ -13,7 +13,7 @@ public class Deck {
 
 	public Deck(){
 		this.cards = new ArrayList<Card>();
-		this.discardPile = new ArrayList<Card>()
+		this.discardPile = new ArrayList<Card>();
 
 
 		this.numberOfCards = 52;
@@ -29,12 +29,13 @@ public class Deck {
 	}
 
 	public Card dealCard(){
-		//TODO: finish dealCard
+		Card card = cards.get(0);
+		cards.remove(0);
 		return card;
 	}
 
-	public Card discardCard(){
-		//TODO: add logic for discarding
+	public void discardCard(Card card){
+		discardPile.add(card);
 	}
 
 	public boolean getShuffled(){
@@ -43,6 +44,16 @@ public class Deck {
 
 	public ArrayList<Card> getCards(){
 		return this.cards;
+	}
+
+	@Override
+	public String toString(){
+
+		String result = "";
+		for (Card card : this.cards) {
+			result += (card + "\n");
+		}
+		return result;
 	}
 	
 }
