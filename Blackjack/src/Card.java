@@ -7,6 +7,12 @@ public class Card {
 
 	private Color color;
 
+
+	public Card(Suit suit, int value){
+		this.suit = suit;
+		this.value = value;
+	}
+
 	//Methods
 
 	public Suit getSuit(){
