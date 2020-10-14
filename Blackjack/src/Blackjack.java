@@ -34,6 +34,11 @@ public class Blackjack {
 		//Game Loop
 		while (play.equalsIgnoreCase("Y")) {
 			System.out.printf("Lets start a new round: \n");
+			if(deck.getNumberOfCards() < 15){
+				System.out.println("Time for a shuffle!!\n");
+				deck = new Deck();
+				deck.shuffleCards();
+			}
 			for (int i = 1; i <= 2; i++) {
 				for (int j = 0; j < players.size(); j++) {
 					Player curPlayer = players.get(j);
@@ -66,7 +71,9 @@ public class Blackjack {
 						String answer = userInput.nextLine();
 
 						if(answer.equalsIgnoreCase("H")){
-							player.giveCard(deck.dealCard());
+							Card newPlayerCard = deck.dealCard();
+							System.out.println(newPlayerCard.toString());
+							player.giveCard(newPlayerCard);
 							System.out.printf("Current Total: %s", player.getCurrentTotal());
 						} else{
 							break;
@@ -91,9 +98,10 @@ public class Blackjack {
 
 			//end of game - reset hands
 			for (Player player : players) {
-				
+				player.removeAllCards();
+				System.out.println("Cards cleared!");
 			}
-
+			System.out.println("Cards left: "+ deck.getNumberOfCards());
 			System.out.println("Would you like to play again (Y)es or (N)o?");
 			play = userInput.nextLine();
 		}
