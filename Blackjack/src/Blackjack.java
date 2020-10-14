@@ -74,7 +74,11 @@ public class Blackjack {
 					}
 
 					if(currentTotal == 21){
-						System.out.println("Woohoo blackjack");
+						System.out.println("\nWoohoo blackjack");
+					}
+
+					if(currentTotal > 21 ){
+						System.out.println("\nDamn, you broke");
 					}
 
 					
