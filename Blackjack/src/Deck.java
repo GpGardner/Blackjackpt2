@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Deck {
 
@@ -32,6 +33,23 @@ public class Deck {
 		Card card = cards.get(0);
 		cards.remove(0);
 		return card;
+	}
+
+	public void shuffleCards(){
+		Random num = new Random();
+
+		Card temporaryCard;
+		int j;
+
+		for (int i = 0; i < this.numberOfCards; i++) {
+			j = num.nextInt(this.numberOfCards);
+
+			temporaryCard = this.cards.get(j);
+			this.cards.set(j, this.cards.get(i));
+			this.cards.set(i, temporaryCard);
+			
+		}
+
 	}
 
 	public void discardCard(Card card){
