@@ -8,14 +8,13 @@ public class Deck {
 
 	private boolean shuffled;
 
-	ArrayList<Card> cards;
+	private ArrayList<Card> cards;
 
-	ArrayList<Card> discardPile;
+	private ArrayList<Card> discardPile;
 
 	public Deck(){
 		this.cards = new ArrayList<Card>();
 		this.discardPile = new ArrayList<Card>();
-
 
 		this.numberOfCards = 52;
 		this.shuffled = false;
@@ -32,6 +31,7 @@ public class Deck {
 	public Card dealCard(){
 		Card card = cards.get(0);
 		cards.remove(0);
+		this.numberOfCards--;
 		return card;
 	}
 
