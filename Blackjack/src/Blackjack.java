@@ -30,6 +30,8 @@ public class Blackjack {
 		System.out.println("\nWELCOME TO GEORGE'S BLACKJACK\n");
 		System.out.println("Ill shuffle the deck\n");
 		deck.shuffleCards();
+
+		//Game Loop
 		while (play.equalsIgnoreCase("Y")) {
 			System.out.printf("Lets start a new round: \n");
 			for (int i = 1; i <= 2; i++) {
@@ -87,7 +89,13 @@ public class Blackjack {
 				}
 			}
 
-			play = "N";
+			//end of game - reset hands
+			for (Player player : players) {
+				
+			}
+
+			System.out.println("Would you like to play again (Y)es or (N)o?");
+			play = userInput.nextLine();
 		}
 
 		userInput.close();
