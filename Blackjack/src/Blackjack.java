@@ -43,6 +43,12 @@ public class Blackjack {
 
 			System.out.println("Okay everyone has their cards\n");
 
+			/**
+			 * This is where we loop over the list of players.
+			 * Each players turn is preceded with listing their cards
+			 * As long as their total is less than 21, they get asked to hit or stay
+			 * hit gives them another card, anything else chooses to stay and it moves on to the next person
+			 */
 			for (Player player : players) {
 				boolean choice = true;
 				while (choice) {
