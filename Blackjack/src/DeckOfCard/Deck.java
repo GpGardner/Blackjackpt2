@@ -24,6 +24,7 @@ public class Deck {
 
 	public void shuffleCards() {
 		Random rng = new Random();
+		System.out.println("Ill shuffle the deck(s)\n");
 
 		Card temp;
 		int j;
