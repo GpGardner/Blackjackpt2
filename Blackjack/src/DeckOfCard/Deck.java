@@ -5,75 +5,51 @@ import java.util.Random;
 
 public class Deck {
 
-
+	private ArrayList<Card> cards;
 	private int numberOfCards;
 
-	private boolean shuffled;
-
-	private ArrayList<Card> cards;
-
-	private ArrayList<Card> discardPile;
-
-	public Deck(){
-		this.cards = new ArrayList<Card>();
-		this.discardPile = new ArrayList<Card>();
-
+	public Deck() {
 		this.numberOfCards = 52;
-		this.shuffled = false;
+		generateCards();
+	}
 
+	public Card dealCard(){
+		Card toDeal = cards.get(0);
+		cards.remove(0);
+		return toDeal;
+	}
 
-		 for (int value = 1; value <= 13; value++) {
+	public void shuffleCards() {
+		Random rng = new Random();
+
+		Card temp;
+		int j;
+		for (int i = 0; i < this.numberOfCards; i++) {
+			j = rng.nextInt(this.numberOfCards);
+
+			temp = this.cards.get(i);
+			this.cards.set(i, this.cards.get(j));
+			this.cards.set(j, temp);
+
+		}
+	}
+
+	private void generateCards() {
+		this.cards = new ArrayList<Card>();
+		for (int value = 1; value < 14; value++) {
 			for (int suit = 0; suit < 4; suit++) {
-				Card card = new Card(Suit.values()[suit], value);
-				cards.add(card);
+				this.cards.add(new Card(Suit.values()[suit], value));
 			}
 		}
 	}
 
-	public Card dealCard(){
-		Card card = cards.get(0);
-		cards.remove(0);
-		this.numberOfCards--;
-		return card;
-	}
-
-	public void shuffleCards(){
-		Random num = new Random();
-
-		Card temporaryCard;
-		int j;
-
-		for (int i = 0; i < this.numberOfCards; i++) {
-			j = num.nextInt(this.numberOfCards);
-
-			temporaryCard = this.cards.get(j);
-			this.cards.set(j, this.cards.get(i));
-			this.cards.set(i, temporaryCard);
-			
-		}
-
-	}
-
-	public void discardCard(Card card){
-		discardPile.add(card);
-	}
-
-	public boolean getShuffled(){
-		return this.shuffled;
-	}
-
-	public ArrayList<Card> getCards(){
-		return this.cards;
-	}
-
 	@Override
-	public String toString(){
-
+	public String toString() {
 		String result = "";
 		for (Card card : this.cards) {
 			result += (card + "\n");
 		}
 		return result;
 	}
-	
+
 }
