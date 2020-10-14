@@ -41,4 +41,8 @@ public class Player {
 		return this.broke;
 	}
 
+	public String getName(){
+		return this.name;
+	}
+
 }
