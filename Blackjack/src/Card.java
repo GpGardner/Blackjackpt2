@@ -7,5 +7,18 @@ public class Card {
 
 	private Color color;
 
+	//Methods
+
+	public Suit getSuit(){
+		return this.suit;
+	}
+
+	public int getValue() {
+		return this.value;
+	}
+
+	public Color getColor() {
+		return this.color;
+	}
 
 }
