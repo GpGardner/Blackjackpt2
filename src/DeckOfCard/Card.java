@@ -1,5 +1,11 @@
 package DeckOfCard;
 
+/**
+ * This card class is our representation of a playing card 
+ * @param Suit,
+ * @param value,
+ */
+
 public class Card {
 
 	private Suit suit;
@@ -12,33 +18,49 @@ public class Card {
 
 	public Card(Suit suit, int value) {
 		this.suit = suit;
-		if(value > 10){
+		if (value > 10) {
 			this.value = 10;
 		} else {
 			this.value = value;
 		}
 		convertValue();
-		
+
 	}
 
-	// Methods
+	/**
+	 * @return Suit
+	 */
 
 	public Suit getSuit() {
 		return this.suit;
 	}
 
+	/**
+	 * @return int
+	 */
 	public int getValue() {
 		return this.value;
 	}
 
+	/**
+	 * @return Color
+	 */
 	public Color getColor() {
 		return this.color;
 	}
 
-	public String getCardType(){
+	/**
+	 * @return String
+	 */
+	public String getCardType() {
 		return this.cardType;
 	}
 
+	/**
+	 * This method converts the value of a card to its face value
+	 * 
+	 * @return String
+	 */
 	private String convertValue() {
 		switch (this.value) {
 			case 1:
@@ -86,6 +108,10 @@ public class Card {
 		return this.cardType;
 	}
 
+	/**
+	 * 
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		String card = String.format("%s of %s", getCardType(), getSuit());
