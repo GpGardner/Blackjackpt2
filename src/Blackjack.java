@@ -63,15 +63,8 @@ public class Blackjack {
 				deck = new Deck();
 				deck.shuffleCards();
 			}
-			for (int i = 1; i <= 2; i++) {
-				for (int j = 0; j < players.size(); j++) {
-					Player curPlayer = players.get(j);
-					Card curCard = deck.dealCard();
-					System.out.printf("%s gets dealt a %s\n", curPlayer.getName(), curCard);
-					curPlayer.giveCard(curCard);
-				}
-			}
-
+			dealCards(players.size());
+			
 			System.out.println("Okay everyone has their cards\n");
 
 			/**
@@ -87,9 +80,13 @@ public class Blackjack {
 					System.out.println("Current Cards:");
 					player.showCards();
 					int currentTotal = player.getCurrentTotal();
-					System.out.printf("Current Total: %s", player.getCurrentTotal());
+					printTotal(currentTotal, player);
 
-					while (currentTotal < 21) {
+					while (currentTotal <= 21) {
+						if (currentTotal == 21 && player.getHandSize() == 2) {
+							System.out.println("\nWoohoo blackjack");
+							break;
+						}
 
 						System.out.printf("\n%s, would you like to (H)it or (S)tay?\n\n", player.getName());
 						String answer = userInput.nextLine();
@@ -98,17 +95,15 @@ public class Blackjack {
 							Card newPlayerCard = deck.dealCard();
 							System.out.println(newPlayerCard.toString());
 							player.giveCard(newPlayerCard);
-							System.out.printf("Current Total: %s", player.getCurrentTotal());
+							printTotal(currentTotal, player);
+
 						} else {
 							break;
 						}
 
 						currentTotal = player.getCurrentTotal();
 					}
-
-					if (currentTotal == 21) {
-						System.out.println("\nWoohoo blackjack");
-					}
+					
 
 					if (currentTotal > 21) {
 						System.out.println("\nDamn, you broke");
@@ -129,6 +124,22 @@ public class Blackjack {
 		}
 
 		userInput.close();
+	}
+
+	private void printTotal(int currentTotal, Player player ) {
+		System.out.printf("Current Total: %s", player.getCurrentTotal());
+
+	}
+
+	private void dealCards(int size) {
+		for (int i = 1; i <= 2; i++) {
+			for (int j = 0; j < size; j++) {
+				Player curPlayer = players.get(j);
+				Card curCard = deck.dealCard();
+				System.out.printf("%s gets dealt a %s\n", curPlayer.getName(), curCard);
+				curPlayer.giveCard(curCard);
+			}
+		}
 	}
 
 }

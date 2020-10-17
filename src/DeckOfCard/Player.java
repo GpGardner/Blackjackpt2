@@ -57,4 +57,8 @@ public class Player {
 		return this.name;
 	}
 
+	public int getHandSize(){
+		return this.hand.size();
+	}
+
 }
