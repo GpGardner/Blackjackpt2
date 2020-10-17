@@ -19,7 +19,7 @@ import DeckOfCard.*;
 
 public class Blackjack {
 
-	private int winValue = 21;
+	private int winValue;
 
 	private Dealer dealer;
 
@@ -82,8 +82,8 @@ public class Blackjack {
 					int currentTotal = player.getCurrentTotal();
 					printTotal(currentTotal, player);
 
-					while (currentTotal <= 21) {
-						if (currentTotal == 21 && player.getHandSize() == 2) {
+					while (currentTotal <= this.getWinValue()) {
+						if (currentTotal == this.getWinValue() && player.getHandSize() == 2) {
 							System.out.println("\nWoohoo blackjack");
 							break;
 						}
@@ -105,7 +105,7 @@ public class Blackjack {
 					}
 					
 
-					if (currentTotal > 21) {
+					if (currentTotal > this.getWinValue()) {
 						System.out.println("\nDamn, you broke");
 					}
 
@@ -140,6 +140,10 @@ public class Blackjack {
 				curPlayer.giveCard(curCard);
 			}
 		}
+	}
+
+	public int getWinValue() {
+		return this.winValue;
 	}
 
 }
