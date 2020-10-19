@@ -12,11 +12,13 @@ public class Player {
 	private int currentTotal;
 	private boolean broke;
 	private boolean hasBlackJack;
+	private boolean isDealer;
 
-	public Player(String name) {
+	public Player(String name, boolean isDealer) {
 		this.name = name;
 		this.hand = new ArrayList<Card>();
 		this.currentTotal = 0;
+		this.isDealer = isDealer;
 	}
 
 	public void showCards() {
@@ -61,4 +63,11 @@ public class Player {
 		return this.hand.size();
 	}
 
+	public boolean getIsDealer(){
+		return this.isDealer;
+	}
+
+	public void setIsDealer(boolean answer){
+		this.isDealer = answer;
+	}
 }
