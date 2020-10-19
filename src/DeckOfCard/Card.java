@@ -1,7 +1,8 @@
 package DeckOfCard;
 
 /**
- * This card class is our representation of a playing card 
+ * This card class is our representation of a playing card
+ * 
  * @param Suit,
  * @param value,
  */
@@ -12,9 +13,11 @@ public class Card {
 
 	private int value;
 
-	private Color color;
+	private String color;
 
 	private String cardType;
+
+	static String ansiReset = "\u001B[0m";
 
 	public Card(Suit suit, int value) {
 		this.suit = suit;
@@ -23,6 +26,12 @@ public class Card {
 		} else {
 			this.value = value;
 		}
+		if(this.suit == Suit.CLUBS || this.suit == Suit.SPADES){
+			this.color = "\u001B[30m";
+		} else {
+			this.color = "\u001B[31m";
+		}
+
 		convertValue();
 
 	}
@@ -45,7 +54,7 @@ public class Card {
 	/**
 	 * @return Color
 	 */
-	public Color getColor() {
+	public String getColor() {
 		return this.color;
 	}
 
@@ -108,13 +117,34 @@ public class Card {
 		return this.cardType;
 	}
 
+	private String getCardSuitAscii() {
+		String suitStr = "";
+		switch (this.suit) {
+			case HEARTS:
+				suitStr = "\u2764";
+				break;
+			case DIAMONDS:
+				suitStr = "\u2666";
+				break;
+			case CLUBS:
+				suitStr = "\u2663";
+				break;
+			case SPADES:
+				suitStr = "\u2660";
+				break;
+			default:
+				break;
+		}
+		return suitStr;
+	}
+
 	/**
 	 * 
 	 * @return String
 	 */
 	@Override
 	public String toString() {
-		String card = String.format("%s of %s", getCardType(), getSuit());
+		String card = String.format("%s%s of %s%s", getColor(), getCardType(), getCardSuitAscii(), ansiReset);
 		return card;
 	}
 
