@@ -35,8 +35,8 @@ public class Blackjack {
 		players = new ArrayList<Player>();
 		this.winValue = 21;
 		dealer = new Dealer();
-		players.add(new Player("George"));
-		players.add(new Player("Steve"));
+		players.add(new Player("George", true));
+		players.add(new Player("Steve", false));
 		deck = new Deck();
 	}
 
